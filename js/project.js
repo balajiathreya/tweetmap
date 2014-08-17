@@ -35,6 +35,9 @@ angular.module('tweetMapModule', ['google-maps'])
         var e = originalEventArgs[0];
         var lat = e.latLng.lat(),
         lon = e.latLng.lng();
+
+        console.log('lat '+lat);
+        console.log('lon '+lon);
         // make service call here
         //scope apply required because this event handler is outside of the angular domain
         $scope.$apply();
