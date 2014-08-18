@@ -30,7 +30,7 @@ angular.module('tweetMapModule', ['google-maps'])
   };
 
   var setTrendingData = function(woeid){
-    url = "http://localhost:5000/gettrending?woeid="+$scope.woeid;
+    url = "http://twitterhelper.balajiathreya.com/gettrending?woeid="+$scope.woeid;
     var responsePromise = $http.get(url);
     console.log('woeid '+woeid);
     responsePromise.success(function(data, status, headers, config) {      
@@ -55,7 +55,7 @@ angular.module('tweetMapModule', ['google-maps'])
         var e = originalEventArgs[0];
         var lat = e.latLng.lat(),
         lon = e.latLng.lng();
-        url = "http://localhost:5000/getWOEID?lat="+lat+'&lon='+lon
+        url = "http://twitterhelper.balajiathreya.com/getWOEID?lat="+lat+'&lon='+lon
         var responsePromise = $http.get(url);
 
         responsePromise.success(function(data, status, headers, config) {
