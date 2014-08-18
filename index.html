@@ -30,16 +30,37 @@
 
 <body  ng-controller="TweetMapController">
 
-      <google-map center="map.center"
+    <div class="row">
+        <div class='col-md-9'>
+            <google-map center="map.center"
             zoom="map.zoom"
-            class="span7"
             draggable="true"
             dragging="map.dragging"
             bounds="map.bounds"
             events="map.events"
             options="map.options"
             pan="true"
-            control="map.control"></google-map>      
+            control="map.control"></google-map>
+        </div>
+        <div class='col-md-3'>
+            <span>
+                  <h3>Trending Tweets for {{selectedLocale}}</h3>
+                  <span ng-switch on="trending[0]">
+                        <span ng-switch-when="N">{{trending}}</span>
+                        <span ng-switch-default>
+                              <span ng-repeat = "topic in trending[0].trends">
+                                    <a ng-href='{{topic.url}}'>{{topic.name}}</a><br/>
+                              </span>
+                        </span>
+                  </span>
+            </span>  
+        </div>
+    </div>
+
+        
+
+
+        
 
 </body>
 </html>
