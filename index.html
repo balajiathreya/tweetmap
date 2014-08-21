@@ -29,7 +29,7 @@
 </head>
 
 <body  ng-controller="TweetMapController">
-
+    <h3>Choose a location on the map to find out trending topics in that area</h3>
     <div class="row">
         <div class='col-md-9'>
             <google-map center="map.center"
@@ -43,8 +43,8 @@
             control="map.control"></google-map>
         </div>
         <div class='col-md-3'>
-            <span>
-                  <h3>Trending Tweets for {{selectedLocale}}</h3>
+            <span>		  
+                  <h4>{{title}}</h4>
                   <span ng-switch on="trending[0]">
                         <span ng-switch-when="N">{{trending}}</span>
                         <span ng-switch-default>

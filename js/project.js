@@ -35,7 +35,6 @@ angular.module('tweetMapModule', ['google-maps'])
     console.log('woeid '+woeid);
     responsePromise.success(function(data, status, headers, config) {      
       $scope.trending = data;
-      console.log('trending data: ' + data);
     });
 
     responsePromise.error(function(data, status, headers, config) {
@@ -59,16 +58,15 @@ angular.module('tweetMapModule', ['google-maps'])
         responsePromise = $http.get(url);
 
         responsePromise.success(function(data, status, headers, config) {
-          console.log(data);
-	  $scope.trending = data;
-          $scope.selectedLocale = data.name;
-          woeid = data.woeid;          
+	  $scope.trending = data[0];
+          $scope.title = 'Trending Topics near ' + data[0].name;
+          woeid = data[0].woeid;          
           setTrendingData(woeid);
         });
 
         responsePromise.error(function(data, status, headers, config) {
           $scope.trending = data;
-          $scope.selectedLocale = "Couldn't get locale";
+          $scope.title = "Couldn't get locale. Displaying trending topics worldwide";
           setTrendingData(DEFAULT_WOEID);
         });
         
